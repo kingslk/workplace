@@ -1,0 +1,23 @@
+<view wx:if="{{list.length!=0}}">
+  <view class="item" wx:for="{{list}}">
+    <view wx:if="{{item.status==true}}">
+      <image src="../images/check.jpg" mode="widthFix" />
+    </view>
+    <view wx:else>
+      <image src="../images/uncheck.png" mode="widthFix" />
+    </view>
+    <view class="info" bindtap="toOrder" data-addressId="{{item.id}}" data-name='{{item.receiver}}' data-telephone="{{item.telephone}}" data-addressDetail='{{item.addressName}}' data-status='{{item.status}}'>
+      <text>{{item.receiver}}，{{item.telephone}}</text>
+      <text>地址：{{item.addressName}}</text>
+    </view>
+    <view class="modify" bindtap="toModifyAddre" data-addressId="{{item.id}}" data-userId="{{item.userId}}" data-name='{{item.receiver}}' data-telephone="{{item.telephone}}" data-addressDetail='{{item.addressName}}' data-status='{{item.status}}'>
+      <image src="../images/modify.png" mode="widthFix" />
+    </view>
+  </view>
+</view>
+<view wx:else style="text-align:center;font-size:25px;color:#cfcfcf;padding-top:20px">您还没有填写任何地址</view>
+<view class="add" bindtap="addAddre">
+  <image class="left" src="../images/6.png" mode="widthFix" />
+  <view class="text">新增个人地址</view>
+  <image class="right" src="../images/right.png" mode="widthFix" />
+</view>

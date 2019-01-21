@@ -1,0 +1,87 @@
+<view class="container">
+  <view class="page-body">
+  <view wx:if="{{addressMessage}}">
+    <button bindtap='sendToChooseAddress'>
+      <view class="address-body">
+        <view style='width:25px;height:25px'>
+          <image src='../images/坐标.png' style='width:25px;height:25px'></image>
+        </view>
+        <view>
+          <view class='name-phone'>
+            <view>收货人:{{addressMessage.receiver}}</view>
+            <view>{{addressMessage.telephone}}</view>
+          </view>
+          <view style='font-size: 15px;'>收获地址:{{addressMessage.addressName}}</view>
+        </view>
+        <view style='width:25px;height:25px'>
+          <image src='../images/jiantou.png' style='width:25px;height:25px'></image>
+        </view>
+      </view>
+    </button>
+  </view>
+  <view wx:else>
+    <button bindtap='sendToChooseAddress'>您还没有设置地址,点击设置地址
+    </button>
+  </view>
+    <view>
+      <image src='../images/colorline.jpg' style='height:5px;width:100%;padding-bottom:10px'></image>
+    </view>
+    <view>
+      <view class='shopTitle'>
+        <view style='width:25px;height:25px'>
+          <image src='../images/单子.png' style='width:25px;height:25px'></image>
+        </view>
+        <view>购物清单</view>
+
+      </view>
+      <view class='line-container1'>
+      </view>
+      <view wx:for="{{goodsMessage}}" wx:key="*this">
+        <view class="shopDetail">
+          <view>
+            <image src="{{item.media}}" style='width:110px;height:110px'></image>
+          </view>
+          <view style="font-size:25px">
+          <text>{{item.name}}</text>
+          <!-- <text wx:for='{{item.partsMessage}}'>+{{item.partName}}</text> -->
+          </view>
+          <view class="price-sum">
+            <view>￥{{item.price}}</view>
+            <view>{{item.num}}</view>
+          </view>
+        </view>
+        <view class='line-container1'>
+        </view>
+      </view>
+       <textarea style='font-size:15px;padding-left:10px;padding-top:10px' placeholder='更多评价请写在这里（最多50字）' bindinput="inputs" auto-height="true"></textarea>
+      <view class='line-container1'>
+      </view>
+      <view class="allprice-allsum">
+        <view style='padding:0 20px;font-size:15px'>共计{{totalSum}}件商品</view>
+        <view style='font-size:15px'>
+          <text>合计:</text>
+          <text style='color:red'>￥{{totalPrice}}</text>
+        </view>
+      </view>
+      <view class='line-container2'>
+      </view>
+    </view>
+    <view class="allprice-extra">
+      <view>商品金额</view>
+      <view style='color:#cdcdcd'>￥{{totalPrice}}</view>
+    </view>
+    <view class="allprice-extra">
+      <view>运费</view>
+      <view style='color:#cdcdcd'>￥{{extra}}</view>
+    </view>
+    <view class='line-container1'>
+    </view>
+    <view class="buyIt">
+      <view style='flex-grow:2'>
+        <text>实际支付:</text>
+        <text style='color:red'>￥{{actualprice}}</text>
+      </view>
+      <button style='flex-grow:1' class="submitList" hover-class='submitList-over' bindtap='submitorder'>提交订单</button>
+    </view>
+  </view>
+</view>

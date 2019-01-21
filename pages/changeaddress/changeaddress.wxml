@@ -1,0 +1,39 @@
+<!-- 信息部分开始 -->
+<form bindsubmit="formSubmit" report-submit="true">
+  <view class="info">
+    <!-- 姓名部分 -->
+    <view class="item">
+      <text>用户姓名</text>
+      <view class="right">
+        <input type="text" name="receiver" value="{{receiver}}" focus="{{focus}}" />
+      </view>
+    </view>
+
+    <!-- 电话部分 -->
+    <view class="item">
+      <text>联系电话</text>
+      <view class="right">
+        <input name="telephone" type="number" value="{{telephone}}" focus="{{focus}}" />
+      </view>
+    </view>
+
+
+
+    <!-- 详细地址部分 -->
+    <view class="item">
+      <text>详细地址</text>
+      <view class="right">
+        <input name="addressName" type="text" value="{{addressName}}" focus="{{focus}}" />
+      </view>
+    </view>
+
+
+
+
+
+  </view>
+  <!-- 信息部分结束 -->
+  <button class="save" formType="submit">保存</button>
+  <button class="delete" bindtap="delete">删除该地址</button>
+  <button class="delete" bindtap="cancel">取消</button>
+</form>

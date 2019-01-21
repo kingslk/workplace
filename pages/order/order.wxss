@@ -1,0 +1,87 @@
+.address-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.name-phone {
+  font-size: 15px;
+  width: 250px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shopTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 110px;
+  padding: 0 10px;
+}
+
+.line-container1 {
+  height: 2rpx;
+  background-color: #353535;
+  width: 98%;
+  margin: 20rpx auto 0;
+}
+
+.line-container2 {
+  height: 10rpx;
+  background-color: #cdcdcd;
+  width: 98%;
+  margin: 20rpx auto 0;
+}
+
+.shopDetail {
+  height: 130px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.price-sum {
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+}
+
+.allprice-allsum {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px 10px;
+}
+
+.allprice-extra {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 10px;
+  font-size: 12px;
+}
+
+.buyIt {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.submitList {
+  background-color: red;
+  color: white;
+  border-radius: 0;
+}
+
+.submitList-over {
+  background-color: wheat;
+  border-radius: 0;
+}

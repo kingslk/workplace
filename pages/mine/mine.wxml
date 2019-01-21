@@ -1,0 +1,25 @@
+<view class="main">
+  <view class="header">
+    <image src="{{thumb}}" class="thumb"></image>
+    <text class="nickname">{{nickname}}</text>
+  </view>
+  <view class="address-box">
+    <view class="address-manage" bindtap='addressmanage'>
+      地址管理
+    </view>
+    <view wx:if="{{address}}" class="address-list">
+      <view>默认收货地址</view>
+      <view>收货人：{{address.receiver}}</view>
+      <view>电话：{{address.telephone}}</view>
+      <view>详细地址：{{address.addressName}}</view>
+    </view>
+    <view wx:else class="address-list">
+      <view>您还未设置任何地址</view>
+    </view>
+  </view>
+  <view class="address-box">
+    <view class="address-manage" bindtap='ordermanage'>
+      订单管理
+    </view>
+  </view>
+</view>

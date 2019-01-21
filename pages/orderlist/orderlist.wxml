@@ -1,0 +1,136 @@
+<!-- 订单头 -->
+<view class="swiper-tab">
+  <text class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab" data-order="{{order1}}" style='font-size:15px '>待付款</text>
+  <view class='background'>
+    <text style='width:50px;font-size:12px;color:#ffffff'>{{status.pendingPayment}}</text>
+  </view>
+  <text style='font-size:15px' class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" data-order="{{order2}}" bindtap="clickTab">待发货</text>
+  <view class='background'>
+    <text style='width:50px;font-size:12px;color:#ffffff'>{{status.pendingDelivery}}</text>
+  </view>
+  <text style='font-size:15px' class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" data-order="{{order3}}" bindtap="clickTab">待收货</text>
+  <view class='background'>
+    <text style='width:50px;font-size:12px;color:#ffffff'>{{status.pendingGain}}</text>
+  </view>
+  <text style='font-size:15px' class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" data-order="{{order4}}" bindtap="clickTab">待评价</text>
+  <view class='background'>
+    <text style='width:50px;font-size:12px;color:#ffffff'>{{status.pendingEvaluated}}</text>
+  </view>
+</view>
+<!-- 高度需要调整 -->
+<swiper current="{{currentTab}}" duration="300" bindchange="swiperTab" style='height:{{height}}px'>
+
+  <!-- 待付款 -->
+  <swiper-item>
+    <view wx:for='{{orders1}}' wx:key='{{item.id}}'>
+      <view>
+        <view class='status-container'>等待买家付款</view>
+        <view class='orders-container'>
+          <view>
+            <image src='{{item.media}}' style='height:100px;width:100px'></image>
+          </view>
+          <view class="message-container">
+            <view>{{item.name}}</view>
+            <view style='text-align:right' class='right-container'>
+              <view>￥{{item.sumPrice}}</view>
+              <view class='sum-container'>{{item.num}}</view>
+              <view class="button-container">
+                <button style='font-size:12px;' bindtap='deleteOrder' id='{{item.id}}'>取消订单</button>
+                <button style='font-size:12px' bindtap='goToPay' id='{{item.id}}'>去付款</button>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='line-container'>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+
+  <!-- 待发货 -->
+  <swiper-item>
+    <view wx:for='{{orders2}}' wx:key='{{item.id}}'>
+      <view>
+        <view class='status-container'>等待卖家发货</view>
+        <view class='orders-container'>
+          <view>
+            <image src='{{item.media}}' style='height:100px;width:100px'></image>
+          </view>
+          <view class="message-container" style='width:200px'>
+            <view>{{item.name}}</view>
+            <view style='text-align:right' class='right-container'>
+              <view>￥{{item.sumPrice}}</view>
+              <view class='sum-container'>{{item.num}}</view>
+              <view wx:if='{{item.reminderShipment}}'>
+                <button style='font-size:12px; ' bindtap='reminderShipment' id='{{item.id}} '>提醒发货</button>
+              </view>
+              <view wx:else>
+                <button style='font-size:12px; ' bindtap='reminderShipment' id='{{item.id}} ' disabled='true'>已经提醒发货</button>
+              </view>
+            </view>
+          </view>
+
+        </view>
+        <view class='line-container '>
+        </view>
+      </view>
+    </view>
+
+  </swiper-item>
+  <!-- 待收货 -->
+  <swiper-item>
+    <view wx:for='{{orders3}}' wx:key='{{item.id}}'>
+      <view>
+        <view class='send-status-container '>
+          <view>自动确认收货时间:{{item.end_time}}</view>
+          <view>等待买家收货</view>
+        </view>
+        <view class='orders-container'>
+          <view>
+            <image src='{{item.media}}' style='height:100px;width:100px '></image>
+          </view>
+          <view class="message-container" style='width:200px '>
+            <view>{{item.name}}</view>
+            <view style='text-align:right ' class='right-container '>
+              <view>￥{{item.sumPrice}}</view>
+              <view class='sum-container '>{{item.num}}</view>
+              <view>
+                <button style='font-size:12px; ' bindtap='confirmReceipt' id='{{item.id}}'>确认收货</button>
+              </view>
+            </view>
+          </view>
+
+        </view>
+        <view class='line-container '>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+  <!-- 待评价 -->
+  <swiper-item>
+    <view wx:for='{{orders4}}' wx:key='{{item.id}}'>
+      <view>
+        <view class='status-container '>等待评价</view>
+        <view class='orders-container '>
+          <view>
+            <image src='{{item.media}}' style='height:100px;width:100px '></image>
+          </view>
+          <view class="message-container" style='width:200px '>
+            <view>{{item.name}}</view>
+            <view style='text-align:right ' class='right-container '>
+              <view>￥{{item.sumPrice}}</view>
+              <view class='sum-container '>{{item.num}}</view>
+              <view>
+                <button style='font-size:12px;' bindtap='toevaluate' id='{{item.id}}'>去评价</button>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='line-container '>
+        </view>
+      </view>
+    </view>
+  </swiper-item>
+</swiper>
+
+<!-- 磨态窗 -->
